@@ -1,0 +1,60 @@
+{
+  "name": "fuper",
+  "version": "0.0.0",
+  "description": "Fixed update for JS applications",
+  "main": "lib/",
+  "scripts": {
+    "test": "mocha test.js",
+    "build": "npm run babel && npm run dist && npm run min",
+    "babel": "rm -rf lib/* && babel index.js --out-dir lib",
+    "dist": "rm -rf dist/* && mkdir -p dist && browserify index.js -s fuper -t [babelify] -o dist/fuper.js",
+    "min": "uglifyjs dist/fuper.js --lint -c -o dist/fuper.min.js",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndchristie/fuper.git"
+  },
+  "keywords": [
+    "fixed",
+    "timestep",
+    "animation",
+    "frame",
+    "loop"
+  ],
+  "author": "N.D.Christie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndchristie/fuper/issues"
+  },
+  "homepage": "https://github.com/ndchristie/fuper#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browserify": "^14.5.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^4.0.1",
+    "raf": "^3.4.0",
+    "raf-stub": "^2.0.1",
+    "sinon": "^4.1.3",
+    "standard-version": "^4.2.0",
+    "uglify-js": "^3.2.2"
+  },
+  "dependencies": {},
+  "files": [
+    "lib/"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

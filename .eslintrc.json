@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    "no-mixed-operators": 0,
+    "no-plusplus": 0
+  },
+  "globals": {
+    "requestAnimationFrame": true,
+    "cancelAnimationFrame": true
+  }
+}

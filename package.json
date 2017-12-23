@@ -1,6 +1,6 @@
 {
   "name": "fuper",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Fixed update for JS applications",
   "main": "lib/",
   "scripts": {

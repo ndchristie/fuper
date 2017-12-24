@@ -61,7 +61,7 @@ const someOtherRequest = requestAnimationFrame((frameTime) => {
   someOtherCode();
 
   if (someLogic) {
-    fooper().play(frameTime); // will run from the beginning of this frame
+    fooper.play(frameTime); // will run from the beginning of this frame
   }
 });
 ```

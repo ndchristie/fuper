@@ -4,9 +4,9 @@
 
 ## Purpose
 
-Fuper publishes a fixed update loop, breaking accumulated delta time into equal-length chunks.
+Fuper provides a fixed update loop, breaking accumulated delta time across requested animation frames into chunks having equal duration.
 
-Fixed timesteps are commonly used by realtime games and apps, especially those containing procedural animation or physics simulations, to help prevent inconsistencies when computing change over fluid timesteps.
+Fixed upates are commonly used by realtime games and apps, especially those containing procedural animation or physics simulations, to help prevent inconsistencies when computing change over fluid timesteps.
 
 ## Install
 
@@ -53,6 +53,20 @@ fuper.play(performance.now());
 The number of fixed updates will be as many that fit between the start time and the next animation frame.
 
 Keep in mind that doing so may result in fuper processing partial frames; it may be better (and simpler) to wait.
+
+If you are calling play from inside of another requestAnimationFrame callback, the timestamp passed to that callback can be used to ensure a complete frame is processed:
+
+```js
+const someOtherRequest = requestAnimationFrame((frameTime) => {
+  someOtherCode();
+
+  if (someLogic) {
+    fooper().play(frameTime); // will run from the beginning of this frame
+  }
+});
+```
+
+For more on animation frames and timing, see [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame).
 
 ## License
 

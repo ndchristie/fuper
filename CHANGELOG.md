@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/ndchristie/fuper/compare/v0.1.1...v1.0.0) (2017-12-24)
+
+
+### Bug Fixes
+
+* Add test for alpha value and move frameClock calculation above callbacks ([cb5cf65](https://github.com/ndchristie/fuper/commit/cb5cf65))
+
+
+### BREAKING CHANGES
+
+* Previously frameCB would not have any way to know the new frameClock time
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/ndchristie/fuper/compare/v0.1.0...v0.1.1) (2017-12-24)
 

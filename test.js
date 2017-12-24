@@ -61,4 +61,14 @@ describe('Fuper', () => {
     assert.equal(fuper.frameCount, 1001); // unchanged
     assert(Math.abs(fuper.fixedCount - 200) <= 1); // tolerate floating point issues
   });
+  it('provides the remaining deltaTime as alpha', (done) => {
+    fuper = new Fuper({
+      frameCB() {
+        assert(this.alpha === this.frameClock / this.fixedMS);
+        done();
+      }
+    })
+    fuper.play();
+    rafStub.step();
+  });
 });

@@ -54,10 +54,10 @@ class Fuper {
 
       // do fixed steps
       while (this.accMS >= this.fixedMS) {
-        this.fixedCB();
-        this.fixedCount++;
         this.fixedClock += this.fixedMS;
         this.accMS -= this.fixedMS;
+        this.fixedCB();
+        this.fixedCount++;
       }
 
       // do frame step

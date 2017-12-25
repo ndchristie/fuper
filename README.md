@@ -66,6 +66,39 @@ const someOtherRequest = requestAnimationFrame((frameTime) => {
 });
 ```
 
+### Callbacks
+
+Fuper accepts custom callbacks for for the fixed step and the frame.  These are run synchronously within the context of a requested animation frame, ensuring that frameCB is always run after the fixed steps have concluded.
+
+```js
+const fuper = new Fuper({
+  fixedCB() {
+    updatePhysics(this.fixedMS);
+  },
+  frameCB() {
+    interpolate(this.alpha);
+    render();
+  },
+});
+
+example.play();
+```
+
+In the example above, we imagine a common use case for games, in which we update the physics on a fixed timestep, then render an interpolated gamestate on our fluid timestep.  Such implementations are highly individual and Fuper does not include any implementations, instead providing the structure for calling them.  Another example using an event-driven approach might look like so:
+
+```js
+const fuper = new Fuper({
+  fixedCB: () => {
+    events.publish('DO_FIXED_UPDATE');
+  },
+  frameCB: () => {
+    events.publish('DID_FIXED_UPDATES');
+  },
+});
+```
+
+Again, how you leverage Fuper is up to you; what Fuper provides is a structure into which to inject your own functionality.
+
 For more on animation frames and timing, see [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame).
 
 ## License

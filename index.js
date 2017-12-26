@@ -14,6 +14,11 @@ class Fuper {
     frameCount = 0,
     frameClock = 0,
   } = {}) {
+    ['requestAnimationFrame', 'cancelAnimationFrame'].forEach((req) => {
+      if (!{}.hasOwnProperty.call(global, req)) {
+        throw new TypeError(`Fuper requires a ${req} polyfill in this environment`);
+      }
+    });
     // enumerables
     Object.assign(this, {
       accMS,
